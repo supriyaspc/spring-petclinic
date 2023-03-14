@@ -4,7 +4,6 @@ node('MAVEN_JDK8') {
             jdk 'JDK-17'
         }
         git url: 'https://github.com/supriyaspc/spring-petclinic.git',
-            branch: 'scripted',
-            poll: false
+            branch: 'scripted'
     }
 }
