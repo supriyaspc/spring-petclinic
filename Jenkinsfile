@@ -9,20 +9,20 @@ pipeline {
         } 
         stage('package') {
             steps {
-                sh 'mvn package' 
+                sh './mvnw package' 
             }
         }
         stage('post build') {
             steps {
                 archiveArtifacts artifacts: '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
                                  onlyIfSuccessful: true
-                junit testResults: '*/surefire-reports/TEST-.xml'
+                junit testResults: '**/surefire-reports/TEST-*.xml'
             }
         }
         stage('craeting folder') {           
             steps {
                 sh "mkdir -p /tmp/archive/spring-petclinic"
-                sh "cp -r */spring-petclinic-.jar /tmp/archive/spring-petclinic"
+                sh "cp -r */spring-petclinic-*.jar /tmp/archive/spring-petclinic"
                 sh "aws s3 sync /tmp/archive/spring-petclinic s3://nanibucket --acl public-read-write"
             }
         }
