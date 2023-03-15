@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'MAVEN_8' }
+    agent { label 'MAVEN_JDK8' }
     stages {
         stage('vcs') {
             steps {
@@ -21,9 +21,9 @@ pipeline {
         }
         stage('craeting folder') {           
             steps {
-                sh "mkdir -p /tmp/${JOB_NAME}/${BUILD_ID}"
-                sh "cp -r */spring-petclinic-.jar /tmp/${JOB_NAME}/${BUILD_ID}"
-                sh "aws s3 sync /tmp/${JOB_NAME}/${BUILD_ID} s3://nanibucket --acl public-read-write"
+                sh "mkdir -p /tmp/archive/spring-petclinic"
+                sh "cp -r */spring-petclinic-.jar /tmp/archive/spring-petclinic"
+                sh "aws s3 sync /tmp/archive/spring-petclinic s3://nanibucket --acl public-read-write"
             }
         }
     }
