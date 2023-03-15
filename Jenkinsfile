@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh "mkdir -p /tmp/archive/spring-petclinic"
                 sh "cp -r */spring-petclinic-*.jar /tmp/archive/spring-petclinic"
-                sh " sudo aws s3 sync /tmp/archive/spring-petclinic s3://nanibucket03 --acl public-read-write"
+                sh " sudo aws s3 sync /tmp/archive/spring-petclinic s3://awsbucket0319 --acl public-read-write"
             }
         }
     }
