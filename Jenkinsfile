@@ -6,7 +6,7 @@ pipeline {
                 git url: 'https://github.com/supriyaspc/spring-petclinic.git',
                     branch: 'develop'
             }
-        }
+        } 
         stage('package') {
             steps {
                 sh 'mvn package' 
