@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'MAVEN_JDK8' }
+    agent { label 'MAVEN_PEM' }
     stages {
         stage('vcs') {
             steps {
