@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'SPRING-PET' }
+    agent { label 'MAVENPEM' }
     stages {
         stage('vcs') {
             steps {
@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
-        }
+        } 
         stage('post build') {
             steps {
                 archiveArtifacts artifacts: '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
